@@ -1,0 +1,261 @@
+/* ===== Reset / base ===== */
+:root {
+    --accent: #a142f4;
+    --cta: #ee3725;
+    --cta-hover: #000;
+    --muted: #666;
+    --glass: rgba(0,0,0,0.55);
+    --page-max: 1100px;
+}
+
+* { box-sizing: border-box; }
+html,body,#__next { height: 100%; }
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #222;
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===== Full-screen Hero Header ===== */
+.hero {
+    width: 100%;
+    min-height: 100vh;                 /* full viewport height */
+    display: flex;
+    align-items: center;               /* vertical center */
+    justify-content: center;           /* horizontal center */
+    position: relative;
+    background-image: url("/img/Afircado.jpg");
+    background-size: cover;            /* fill while preserving aspect */
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: #fff;
+    overflow: hidden;
+    padding: 0 20px;                   /* small horizontal padding for narrow screens */
+}
+
+/* dark overlay for better text readability */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 1;
+}
+
+/* content container sits above overlay */
+.hero .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: var(--page-max);
+    width: 100%;
+    text-align: center;
+    padding: 40px;
+    margin: 0 auto;
+}
+
+/* responsive heading + copy */
+.hero h1 {
+    margin: 0 0 12px;
+    font-weight: 700;
+    line-height: 1.05;
+    color: #fff;
+    font-size: clamp(1.8rem, 6vw, 3.2rem); /* scales between small and large screens */
+}
+
+.hero p {
+    margin: 8px 0;
+    color: rgba(255,255,255,0.95);
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* countdown */
+#countdown {
+    font-size: clamp(1rem, 2.6vw, 1.25rem);
+    font-weight: 700;
+    color: #ffd4d4;
+    margin-top: 14px;
+}
+
+/* CTA button */
+.btn {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 12px 22px;
+    border-radius: 8px;
+    background: var(--cta);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+.btn:hover { transform: translateY(-4px); background: var(--cta-hover); color: #fff; }
+
+/* small screens adjustments */
+@media (max-width: 600px) {
+    .hero { min-height: 70vh; background-position: center top; }
+    .hero .hero-content { padding: 28px; }
+    .hero h1 { font-size: 1.6rem; }
+}
+
+/* ===== Tickets / Pricing ===== */
+.pricing {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 40px 0;
+}
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    transition: transform .18s ease;
+    text-align: center;
+}
+
+.card:hover { transform: translateY(-6px); }
+
+.price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 12px;
+}
+
+/* ticket image — limit its size so it never blows up */
+.ticket-img {
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 0 auto 15px;
+    display: block;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* put CTAs under the card and center them */
+.card .btn {
+    display: block;
+    width: fit-content;
+    margin: 12px auto 8px;
+}
+
+/* app store / play badges row */
+.google-play {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+}
+.google-play img {
+    height: 48px;
+    display: block;
+    width: auto;
+}
+
+/* ===== Location Section ===== */
+.location-section {
+    padding: 60px 20px;
+    position: relative;
+    text-align: center;
+    color: #222;
+    background: #fafafa;
+}
+
+/* interactive map container */
+.map-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+/* directions button */
+.directions-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+.directions-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+
+/* ===== Registration Form (Google Form Style) ===== */
+.registration-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 60px 20px;
+    background: #f5f5f5;
+    min-height: 100vh;
+}
+
+.registration-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-top: 10px solid var(--accent);
+}
+
+.registration-card h2 { text-align: center; margin-bottom: 25px; color: #202124; font-weight: 600; }
+
+.registration-card label { display: block; margin-bottom: 8px; font-weight: 500; color: #3c4043; }
+
+.registration-card input,
+.registration-card select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border .2s, box-shadow .2s;
+    background: #fff;
+}
+.registration-card input:focus,
+.registration-card select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 6px rgba(161,66,244,0.18);
+}
+
+.registration-card button[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    background: #d93025;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background .18s;
+}
+.registration-card button[type="submit"]:hover { background: var(--cta-hover); color: #fff; }
+
+/* small helpers */
+.container {
+    max-width: var(--page-max);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
